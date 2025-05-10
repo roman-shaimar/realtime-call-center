@@ -50,6 +50,9 @@
     "searchServiceLocation": {
       "value": "${AZURE_SEARCH_SERVICE_LOCATION}"
     },
+    "containerAppsEnvironmentName": {
+      "value": "enmax-ilab"
+    },
     "aiResourceLocation": {
       "value": "${AZURE_AI_RESOURCE_LOCATION}"
     },

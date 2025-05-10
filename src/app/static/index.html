@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Azure Call Center Agent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ENMAX Energy AI Call Center</title>
     <!-- Include Pico.css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css" />
     <!-- Custom Styles -->
@@ -10,15 +11,22 @@
     <!-- Import Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Use a modern sans-serif font -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <!-- Use a modern sans-serif font with more weights -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   </head>
 
   <body>
+    <div class="header">
+      <div class="logo-container">
+        <img src="/static/enmax-energy.svg" alt="ENMAX Logo" class="logo">
+      </div>
+    </div>
     <div class="flex-container">
       <div class="titles-container">
         <!-- Title -->
-        <h1>Azure Call Center Agent</h1>
+        <h1>ENMAX AI Call Center Agent</h1>
         <h2>Talk to your agent</h2>
       </div>
     </div>
@@ -37,13 +45,13 @@
         </select>
       </div>
     </div>
-    <button id="configButton">Config</button>
+    <button id="configButton"><i class="fas fa-cog"></i> Config</button>
     <!-- Main Container -->
     <div class="main-container">
       <main class="container">
         <article id="1" class="side-by-side">
           <h3>In your browser</h3>
-          <button id="toggleButton" class="black-button">Start Conversation</button>
+          <button id="toggleButton" class="black-button"><i class="fas fa-comment-dots"></i> Start Conversation</button>
           <div id="statusMessage"></div>
           <pre id="report"></pre>
         </article>
@@ -51,11 +59,14 @@
         <article id="2" class="side-by-side">
           <h3>On your phone</h3>
           <form onsubmit="event.preventDefault();">
-            <input type="text" id="phonenumber" placeholder="Your phone number e.g. +49123456789" />
-            <button id="callButton" class="black-button">Receive a call from us</button>
+            <div class="input-with-icon">
+              <i class="fas fa-phone"></i>
+              <input type="text" id="phonenumber" placeholder="Your phone number e.g. +14038893009" />
+            </div>
+            <button id="callButton" class="black-button"><i class="fas fa-phone-alt"></i> Receive a call from us</button>
             <p>or</p>
             <button id="incomingCallButton" class="black-button">
-              Call us directly
+              <i class="fas fa-headset"></i> Call us directly
               <span id="sourcePhoneNumber"></span>
             </button>
           </form>
@@ -79,8 +90,18 @@
         const sidebar = document.getElementById('sidebar');
 
         configButton.addEventListener('click', () => {
-          const isVisible = sidebar.style.display === 'none' || sidebar.style.display === '';
-          sidebar.style.display = isVisible ? 'block' : 'none';
+          const isVisible = !sidebar.classList.contains('active');
+          if (isVisible) {
+            sidebar.style.display = 'block';
+            setTimeout(() => {
+              sidebar.classList.add('active');
+            }, 10);
+          } else {
+            sidebar.classList.remove('active');
+            setTimeout(() => {
+              sidebar.style.display = 'none';
+            }, 300);
+          }
           document.body.classList.toggle('sidebar-visible', isVisible);
         });
       });
