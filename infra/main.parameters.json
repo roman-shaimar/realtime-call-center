@@ -51,7 +51,7 @@
       "value": "${AZURE_SEARCH_SERVICE_LOCATION}"
     },
     "containerAppsEnvironmentName": {
-      "value": "enmax-ilab"
+      "value": "callcenter-ilab"
     },
     "aiResourceLocation": {
       "value": "${AZURE_AI_RESOURCE_LOCATION}"

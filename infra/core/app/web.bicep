@@ -109,8 +109,8 @@ resource app 'Microsoft.App/containerApps@2023-04-01-preview' = {
             }
           ]
           resources: {
-            cpu: json('1')
-            memory: '2.0Gi'
+            cpu: json('2')
+            memory: '4.0Gi'
           }
         }
       ]
